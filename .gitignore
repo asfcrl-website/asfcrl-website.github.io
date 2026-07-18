@@ -1,0 +1,11 @@
+# Local raw experiment exports. Curated website assets live in /docs.
+/交叉口/
+/环岛/
+/交叉口-左转.mp4
+/环岛-1进3出.mp4
+
+# Local tooling and operating-system files.
+/node_modules/
+.DS_Store
+Thumbs.db
+*.log

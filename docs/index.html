@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ASFCRL 与 w/o ASF 在交叉口左转和多车道环岛场景中的实验可视化展示。" />
+    <meta name="theme-color" content="#10251f" />
+    <title>ASFCRL · 复杂交通场景安全决策实验</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳转到主要内容</a>
+
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="返回首页">
+        <span class="brand-mark" aria-hidden="true"><i></i></span>
+        <span class="brand-copy"><b>ASFCRL</b><small>Research exhibit · 2026</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a href="#overview">研究概览</a>
+        <a href="#method">算法对照</a>
+        <a href="#scenarios">实验场景</a>
+        <a href="#comparison">可视化对照</a>
+      </nav>
+      <a class="header-cta" href="#scenarios">进入实验 <span aria-hidden="true">↘</span></a>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="overview">
+        <div class="hero-grid page-shell">
+          <div class="hero-copy reveal">
+            <div class="eyebrow"><span></span> 学位论文 · 实验可视化</div>
+            <h1>让策略探索，<span>拥有安全边界。</span></h1>
+            <p class="hero-lead">
+              面向复杂交通交互环境，对比 <strong>ASFCRL</strong> 与 <strong>w/o ASF</strong>
+              两种算法配置，观察 ASF 机制对决策执行过程的影响。
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#scenarios">浏览动态实验 <span>→</span></a>
+              <a class="button button-quiet" href="#method">了解对照设计</a>
+            </div>
+            <dl class="hero-meta" aria-label="研究概览">
+              <div><dt>2</dt><dd>算法配置</dd></div>
+              <div><dt>2</dt><dd>复杂场景</dd></div>
+              <div><dt>ASF</dt><dd>核心变量</dd></div>
+            </dl>
+          </div>
+
+          <div class="hero-visual reveal reveal-delay">
+            <div class="visual-orbit visual-orbit-one"></div>
+            <div class="visual-orbit visual-orbit-two"></div>
+            <div class="simulation-card">
+              <div class="card-toolbar">
+                <div class="toolbar-title"><span class="live-dot"></span>SIMULATION / 01</div>
+                <span>TOP-DOWN VIEW</span>
+              </div>
+              <div class="video-frame">
+                <video id="hero-video" src="./assets/video/intersection.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                <div class="video-shade"></div>
+                <div class="video-label"><small>ACTIVE SCENE</small><b id="hero-scene-label">交叉口 · 无保护左转</b></div>
+              </div>
+              <div class="signal-strip">
+                <span><i></i> ASFCRL</span><span class="signal-line"></span><span>INTERACTIVE TRAFFIC</span>
+              </div>
+            </div>
+            <div class="floating-note note-top"><span>01</span><p>策略决策<br />Policy action</p></div>
+            <div class="floating-note note-bottom"><span>02</span><p>安全执行<br />Safe rollout</p></div>
+          </div>
+        </div>
+        <div class="scroll-cue" aria-hidden="true"><span>SCROLL TO EXPLORE</span><i></i></div>
+      </section>
+
+      <section class="research-question section-pad">
+        <div class="page-shell question-grid">
+          <div class="section-index reveal">00 / RESEARCH QUESTION</div>
+          <div class="question-copy reveal">
+            <p class="quote-mark" aria-hidden="true">“</p>
+            <h2>当学习策略进入高交互交通场景，<em>安全机制如何改变动作执行？</em></h2>
+            <p>研究采用控制变量式的消融对照：保持场景与策略任务一致，仅比较 ASFCRL 与移除 ASF 的配置，从动态轨迹中观察决策差异。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="method-section section-pad" id="method">
+        <div class="page-shell">
+          <div class="section-heading reveal">
+            <div><span class="section-kicker">01 / ALGORITHM</span><h2>一个研究问题，<br />两种算法配置。</h2></div>
+            <p>将 ASF 作为唯一核心对照变量，使定性观察聚焦于安全机制本身，而不是场景差异。</p>
+          </div>
+          <div class="algorithm-stage reveal">
+            <article class="algorithm-card algorithm-primary">
+              <div class="algorithm-topline"><span>PROPOSED</span><span class="status-pill">研究方法</span></div>
+              <h3>ASFCRL</h3>
+              <p>策略动作经过 ASF 机制处理后进入环境执行，形成完整的安全决策链路。</p>
+              <ol class="algorithm-flow">
+                <li><span>01</span> 策略输出</li><li><span>02</span> ASF 介入</li><li><span>03</span> 动作执行</li>
+              </ol>
+              <div class="card-corner">A</div>
+            </article>
+            <div class="versus" aria-label="对比">VS</div>
+            <article class="algorithm-card algorithm-ablation">
+              <div class="algorithm-topline"><span>ABLATION</span><span class="status-pill status-pill-warm">消融配置</span></div>
+              <h3>w/o ASF</h3>
+              <p>移除 ASF 机制，策略动作直接进入环境，用于识别 ASF 对执行过程的实际影响。</p>
+              <ol class="algorithm-flow">
+                <li><span>01</span> 策略输出</li><li><span>02</span> 跳过 ASF</li><li><span>03</span> 动作执行</li>
+              </ol>
+              <div class="card-corner">B</div>
+            </article>
+          </div>
+          <p class="method-note reveal"><span>CONTROLLED COMPARISON</span>同一场景 · 同一任务 · 仅 ASF 配置不同</p>
+        </div>
+      </section>
+
+      <section class="scenarios-section section-pad" id="scenarios">
+        <div class="page-shell">
+          <div class="section-heading section-heading-light reveal">
+            <div><span class="section-kicker">02 / SCENARIOS</span><h2>从冲突交叉口，<br />到连续环流。</h2></div>
+            <p>两类场景覆盖不同的交互结构。选择场景，动态影像与下方算法对照将同步切换。</p>
+          </div>
+          <div class="scenario-tabs reveal" role="tablist" aria-label="实验场景">
+            <button class="scenario-tab is-active" type="button" role="tab" aria-selected="true" data-scenario="intersection"><span>01</span>交叉口左转</button>
+            <button class="scenario-tab" type="button" role="tab" aria-selected="false" data-scenario="roundabout"><span>02</span>多车道环岛</button>
+          </div>
+          <div class="scenario-view reveal">
+            <div class="scenario-info">
+              <div class="scene-number" id="scene-number">01</div>
+              <span class="scene-type" id="scene-type">INTERSECTION / LEFT TURN</span>
+              <h3 id="scene-title">无保护左转中的多车交互</h3>
+              <p id="scene-description">自车需要在横向与纵向交通流之间完成左转决策，动作时机与安全间距共同构成决策难点。</p>
+              <ul class="scene-features" id="scene-features"><li>多方向交通流</li><li>时序冲突明显</li><li>连续控制决策</li></ul>
+            </div>
+            <div class="scenario-player">
+              <div class="player-meta">
+                <span><i></i> EXPERIMENT PLAYBACK</span>
+                <button class="play-control" id="play-control" type="button" aria-label="暂停视频"><span class="pause-icon" aria-hidden="true"></span><b>PAUSE</b></button>
+              </div>
+              <video id="scenario-video" src="./assets/video/intersection.mp4" autoplay muted loop playsinline preload="metadata"></video>
+              <div class="video-progress" aria-hidden="true"><span id="video-progress-bar"></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="comparison-section section-pad" id="comparison">
+        <div class="page-shell">
+          <div class="comparison-heading reveal">
+            <div><span class="section-kicker">03 / ABLATION VIEW</span><h2>同一回合，<br />并列观察。</h2></div>
+            <div class="comparison-context"><span>当前场景</span><b id="comparison-scene">交叉口左转</b></div>
+          </div>
+          <div class="comparison-grid reveal">
+            <article class="comparison-card comparison-safe">
+              <div class="comparison-label"><div><span>A</span><b>ASFCRL</b></div><small>PROPOSED METHOD</small></div>
+              <div class="gif-frame"><img id="safe-gif" src="./assets/sim/intersection-safe.gif" alt="ASFCRL 在交叉口左转场景中的仿真动画" /></div>
+              <p>包含 ASF 的完整算法配置。</p>
+            </article>
+            <article class="comparison-card comparison-wo">
+              <div class="comparison-label"><div><span>B</span><b>w/o ASF</b></div><small>ABLATION METHOD</small></div>
+              <div class="gif-frame"><img id="ablation-gif" src="./assets/sim/intersection-ablation.gif" alt="w/o ASF 在交叉口左转场景中的仿真动画" /></div>
+              <p>移除 ASF 的消融算法配置。</p>
+            </article>
+          </div>
+          <div class="comparison-footer reveal">
+            <button class="replay-button" id="replay-gifs" type="button"><span aria-hidden="true">↻</span>重新播放本组动图</button>
+            <p><b>说明</b>动态画面用于定性展示；定量分析与结论以论文实验章节为准。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="framework-section section-pad">
+        <div class="page-shell">
+          <div class="section-heading reveal">
+            <div><span class="section-kicker">04 / PIPELINE</span><h2>从环境感知，<br />到动作落地。</h2></div>
+            <p>用一条清晰的实验链路呈现 ASF 在策略与环境之间所处的位置。</p>
+          </div>
+          <div class="pipeline reveal" aria-label="算法执行流程">
+            <article><span class="pipeline-index">01</span><div class="pipeline-icon">OBS</div><h3>环境观测</h3><p>道路结构、周车状态与交互信息进入策略。</p></article>
+            <i class="pipeline-arrow" aria-hidden="true">→</i>
+            <article><span class="pipeline-index">02</span><div class="pipeline-icon">π</div><h3>策略动作</h3><p>策略根据当前观测生成连续控制动作。</p></article>
+            <i class="pipeline-arrow" aria-hidden="true">→</i>
+            <article class="pipeline-focus"><span class="pipeline-index">03</span><div class="pipeline-icon">ASF</div><h3>安全机制</h3><p>ASFCRL 保留该环节，w/o ASF 在此处直接旁路。</p></article>
+            <i class="pipeline-arrow" aria-hidden="true">→</i>
+            <article><span class="pipeline-index">04</span><div class="pipeline-icon">ACT</div><h3>环境执行</h3><p>最终动作作用于车辆，形成下一时刻状态。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing-section">
+        <div class="page-shell closing-grid">
+          <div class="closing-copy reveal"><span class="section-kicker">RESEARCH EXHIBIT</span><h2>用动态证据，<br />讲清算法差异。</h2></div>
+          <div class="closing-notes reveal">
+            <div><span>01</span><p><b>场景同步</b>视频、说明与算法动图随选择同步切换。</p></div>
+            <div><span>02</span><p><b>对照明确</b>统一采用 ASFCRL 与 w/o ASF 两个算法名称。</p></div>
+            <div><span>03</span><p><b>论文友好</b>高对比版式适合答辩展示与页面截图引用。</p></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-shell footer-inner">
+        <div class="brand footer-brand"><span class="brand-mark" aria-hidden="true"><i></i></span><span class="brand-copy"><b>ASFCRL</b><small>Thesis experiment website</small></span></div>
+        <p>复杂交通场景安全决策实验可视化</p>
+        <a href="#top">返回顶部 ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
