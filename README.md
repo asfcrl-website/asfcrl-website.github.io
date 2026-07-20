@@ -1,17 +1,37 @@
-# ASFCRL 实验展示网站
+# ASFCRL Experimental Demonstrations
 
-这是一个面向学位论文与答辩展示的静态网站，对比 **ASFCRL** 与 **w/o ASF** 在交叉口左转和多车道环岛场景中的动态实验。
+This repository hosts the static project page for ASFCRL evaluation demonstrations.
 
-## GitHub Pages 托管
+The website currently presents 24 synchronized MP4 demonstrations without recorded
+safety violations. Each scenario keeps a complete nine-slot grid for future additions:
 
-网站文件位于 `docs/`。将仓库推送到 GitHub 后，进入仓库的 **Settings → Pages**，选择：
+- Roundabout: 9 demonstrations
+- Intersection: 8 demonstrations and 1 reserved slot
+- Multi-Scenario: 7 demonstrations and 2 reserved slots
+- Each episode combines a top-down view and a 3D view into one synchronized video
+
+All 40 generated MP4 assets preserve the episode, environment, seed, and result suffix
+from their source GIF filenames. The complete local collection is stored in `all-mp4/`.
+The 24 files used by the website are copied to `docs/assets/display-mp4/`. Files with
+result suffixes such as `crash_vehicle` or `out_of_lane` are never copied into the
+display collection. Seed values remain in filenames but are not shown in page labels.
+
+The real-world evaluation section is prepared for a future update.
+
+## GitHub Pages
+
+The website is published from the `docs/` directory. In **Settings > Pages**, use:
 
 - Source: `Deploy from a branch`
 - Branch: `main`
 - Folder: `/docs`
 
-保存后，GitHub Pages 会生成公开访问地址。网站不依赖构建工具或外部服务。
+## Local Preview
 
-## 本地查看
+Open `docs/index.html` directly, or serve the `docs/` directory with any static file server.
 
-直接打开 `docs/index.html`，或使用任意静态文件服务器打开 `docs/` 目录。
+## Rebuilding the Videos
+
+Run `tools/build_videos.py` with the raw scenario directories at the repository root.
+The script creates browser-compatible H.264 videos in `all-mp4/`, then synchronizes up
+to nine safety-compliant files per scenario into `docs/assets/display-mp4/`.
