@@ -203,12 +203,12 @@ h1 {
   justify-content: center;
   border: 1px solid #cccccc;
   min-height: 42px;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .comparison-demo-header {
   margin: 0;
-  font-size: 16px;
+  font-size: 13px;
   text-align: center;
   font-weight: 700;
   line-height: 1.2;
