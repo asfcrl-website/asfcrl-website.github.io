@@ -154,6 +154,96 @@ h1 {
   gap: 28px 20px;
 }
 
+.comparison-batch {
+  margin: 24px 0 32px;
+}
+
+.compare-batch-headers {
+  display: grid;
+  grid-template-columns: 110px repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+.compare-batch-row {
+  display: grid;
+  grid-template-columns: 110px repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+.comparison-batch-heading {
+  margin: 0 0 12px;
+  font-size: 20px;
+  text-align: center;
+  color: #555555;
+}
+
+.comparison-batch + .comparison-batch {
+  margin-top: 36px;
+}
+
+.compare-alg-row {
+  display: block;
+}
+
+.compare-alg-label {
+  margin: 0 0 10px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 18px;
+  color: #111111;
+}
+
+.comparison-empty-header,
+.comparison-demo-header,
+.compare-alg-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cccccc;
+  min-height: 42px;
+  font-size: 16px;
+}
+
+.comparison-demo-header {
+  margin: 0;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.compare-alg-label {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.comparison-empty-header {
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+.compare-video-cell {
+  margin: 0;
+}
+
+.compare-alg-label.asfcrl-label {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.small-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.compare-alg-row + .compare-alg-row {
+  margin-top: 16px;
+}
+
 .episode-card h4 {
   margin: 0 0 8px;
   font-size: 16px;
@@ -162,7 +252,7 @@ h1 {
 
 .view-labels {
   display: grid;
-  grid-template-columns: 3fr 4fr;
+  grid-template-columns: 1fr 1fr;
   border: 1px solid #cccccc;
   border-bottom: 0;
 }
@@ -174,7 +264,12 @@ h1 {
   text-align: center;
 }
 
-.view-labels span + span {
+.view-labels .demo-title {
+  grid-column: 1 / span 2;
+  border-bottom: 1px solid #cccccc;
+}
+
+.view-labels span:not(.demo-title) + span:not(.demo-title) {
   border-left: 1px solid #cccccc;
 }
 
@@ -237,6 +332,12 @@ footer p {
   }
 }
 
+@media (max-width: 1100px) {
+  .small-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 680px) {
   .hero {
     padding: 45px 18px 40px;
@@ -273,6 +374,10 @@ footer p {
   }
 
   .episode-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .small-grid {
     grid-template-columns: 1fr;
   }
 }
